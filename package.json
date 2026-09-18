@@ -1,0 +1,20 @@
+{
+  "name": "guessthesongbydraw",
+  "version": "1.0.0",
+  "description": "Guess The Song by Draw - Real-time multiplayer drawing and musical guessing web game",
+  "scripts": {
+    "dev": "python app.py",
+    "start": "python app.py",
+    "seed": "python seed_songs.py",
+    "test": "python -m unittest discover tests"
+  },
+  "keywords": [
+    "drawing-game",
+    "music-game",
+    "flask",
+    "socketio",
+    "multiplayer"
+  ],
+  "author": "",
+  "license": "ISC"
+}
