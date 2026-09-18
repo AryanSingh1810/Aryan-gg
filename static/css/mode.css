@@ -1,0 +1,329 @@
+/* =========================================================
+   DRAW & GUESS (D&G) - MODE SELECTION STYLES
+   Modern Dual-Arena Card Selection
+   ========================================================= */
+
+.mode-page-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 5rem;
+}
+
+.mode-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
+}
+
+.mode-header-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--neon-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
+.mode-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
+}
+
+.mode-main-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Cards Grid */
+.mode-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.mode-select-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6);
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.card-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+}
+
+.song-badge-accent {
+  background: rgba(168, 85, 247, 0.18);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.movie-badge-accent {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.card-stats {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Floating Spheres */
+.card-icon-sphere {
+  width: 84px;
+  height: 84px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  margin-bottom: 1.8rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.song-sphere {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.2));
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.25);
+}
+
+.movie-sphere {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(217, 119, 6, 0.2));
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.25);
+}
+
+/* Card Hover Elevation */
+.song-theme-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(168, 85, 247, 0.55);
+  box-shadow: 0 20px 48px -10px rgba(168, 85, 247, 0.4);
+}
+
+.song-theme-card:hover .song-sphere {
+  transform: scale(1.1) rotate(-6deg);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+}
+
+.movie-theme-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 20px 48px -10px rgba(245, 158, 11, 0.4);
+}
+
+.movie-theme-card:hover .movie-sphere {
+  transform: scale(1.1) rotate(6deg);
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+}
+
+/* Card Content */
+.card-mode-title {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.35rem;
+}
+
+.card-mode-tagline {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.card-mode-desc {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  flex: 1;
+}
+
+.card-features-section {
+  margin-bottom: 1.5rem;
+}
+
+.feature-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pill-song {
+  color: #d8b4fe;
+}
+
+.pill-movie {
+  color: #fde68a;
+}
+
+.difficulty-indicator-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2.25rem;
+}
+
+.diff-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Action Buttons inside Cards */
+.card-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.select-mode-btn {
+  width: 100%;
+  font-size: 1.05rem;
+  padding: 0.95rem 1.8rem;
+}
+
+.join-mode-btn {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+/* Future Modes Teaser */
+.future-modes-teaser {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.teaser-header {
+  margin-bottom: 2rem;
+}
+
+.teaser-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--neon-cyan);
+  margin-bottom: 0.5rem;
+}
+
+.teaser-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.future-modes-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.future-mode-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.future-mode-item:hover {
+  opacity: 1;
+  border-color: var(--neon-cyan);
+}
+
+.future-icon {
+  font-size: 2rem;
+}
+
+.future-info {
+  text-align: left;
+}
+
+.future-info h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.future-status {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .mode-page-container {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .mode-cards-container {
+    grid-template-columns: 1fr;
+  }
+  .mode-select-card {
+    padding: 2rem 1.5rem;
+  }
+  .future-modes-row {
+    flex-direction: column;
+  }
+  .future-mode-item {
+    width: 100%;
+  }
+}

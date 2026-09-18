@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+
+{% block title %}DRAW & GUESS 🎨🎵🎬 - Draw it. Guess it. Win it.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="cinematic-hero-wrapper">
+  <!-- Atmospheric Glow Overlays (White and Orange Theme) -->
+  <div class="ambient-glow glow-orange-left" aria-hidden="true"></div>
+  <div class="ambient-glow glow-orange-right" aria-hidden="true"></div>
+  <div class="ambient-glow glow-amber-center" aria-hidden="true"></div>
+  <div class="ambient-glow glow-center-soft" aria-hidden="true"></div>
+
+  <!-- Background Floating Decorative Elements (Icons) & Particles -->
+  <div class="hero-decorations-layer" aria-hidden="true">
+    <!-- Floating Icons: 🎵 🎬 🎧 🎨 ✏️ ⭐ 🎮 -->
+    <span class="float-icon icon-music-1" title="Music">🎵</span>
+    <span class="float-icon icon-clapper-1" title="Movie">🎬</span>
+    <span class="float-icon icon-headphones" title="Headphones">🎧</span>
+    <span class="float-icon icon-palette" title="Palette">🎨</span>
+    <span class="float-icon icon-pencil" title="Pencil">✏️</span>
+    <span class="float-icon icon-star-1" title="Star">⭐</span>
+    <span class="float-icon icon-gamepad" title="Gamepad">🎮</span>
+    <span class="float-icon icon-music-2" title="Music">🎵</span>
+    <span class="float-icon icon-clapper-2" title="Movie">🎬</span>
+    <span class="float-icon icon-star-2" title="Star">⭐</span>
+
+    <!-- Tiny Glowing Drift Particles (small count for peak performance) -->
+    <span class="particle particle-1"></span>
+    <span class="particle particle-2"></span>
+    <span class="particle particle-3"></span>
+    <span class="particle particle-4"></span>
+    <span class="particle particle-5"></span>
+    <span class="particle particle-6"></span>
+    <span class="particle particle-7"></span>
+  </div>
+
+  <!-- Subtle Curved Warm Orange Light Trails (SVG) -->
+  <svg class="hero-light-trails" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="songTrailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ea580c" stop-opacity="0.32" />
+        <stop offset="50%" stop-color="#f97316" stop-opacity="0.16" />
+        <stop offset="100%" stop-color="#fb923c" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient id="movieTrailGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#f97316" stop-opacity="0.30" />
+        <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.14" />
+        <stop offset="100%" stop-color="#ea580c" stop-opacity="0" />
+      </linearGradient>
+      <filter id="trailGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="8" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <!-- Left Trail sweeping from edge toward left-center -->
+    <path class="trail-path trail-left" d="M 120 120 C 200 280, 360 380, 580 370" stroke="url(#songTrailGrad)" stroke-width="2" fill="none" filter="url(#trailGlow)" />
+    <!-- Right Trail sweeping from edge toward right-center -->
+    <path class="trail-path trail-right" d="M 1320 130 C 1240 290, 1080 390, 860 380" stroke="url(#movieTrailGrad)" stroke-width="2" fill="none" filter="url(#trailGlow)" />
+  </svg>
+
+  <!-- Floating Ropes & Hanging Polaroid Cards Layer (Behind Hero) -->
+  <div class="hanging-cards-layer">
+    <!-- Main Song Card (Left) -->
+    <div class="hanging-card-assembly song-card-assembly" id="songHangingCard" title="Guess the Song">
+      <div class="rope-strand"></div>
+      <div class="wooden-clothespin">
+        <div class="pin-spring"></div>
+      </div>
+      <div class="polaroid-frame song-polaroid">
+        <div class="photo-surface">
+          <img src="{{ url_for('static', filename='images/song-card.jpg') }}" alt="Guess the Song Preview Artwork" class="polaroid-photo" loading="eager" />
+          <div class="photo-vignette"></div>
+          <div class="neon-corner-accent song-corner"></div>
+        </div>
+        <div class="polaroid-caption">
+          <div class="caption-badge song-badge">
+            <span class="caption-icon">🎵</span>
+            <span class="caption-text">Song</span>
+          </div>
+          <div class="caption-sub">"Draw the rhythm"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Movie Card (Right) -->
+    <div class="hanging-card-assembly movie-card-assembly" id="movieHangingCard" title="Guess the Movie">
+      <div class="rope-strand"></div>
+      <div class="wooden-clothespin">
+        <div class="pin-spring"></div>
+      </div>
+      <div class="polaroid-frame movie-polaroid">
+        <div class="photo-surface">
+          <img src="{{ url_for('static', filename='images/movie-card.jpg') }}" alt="Guess the Movie Preview Artwork" class="polaroid-photo" loading="eager" />
+          <div class="photo-vignette"></div>
+          <div class="neon-corner-accent movie-corner"></div>
+        </div>
+        <div class="polaroid-caption">
+          <div class="caption-badge movie-badge">
+            <span class="caption-icon">🎬</span>
+            <span class="caption-text">Movie</span>
+          </div>
+          <div class="caption-sub">"Draw the cinema"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Center Content -->
+  <section class="hero-section">
+    <!-- Glowing Badge / Pill -->
+    <div class="hero-badge animate-fade-in" id="heroBadge">
+      <span class="badge-bolt">⚡</span> NEXT-GEN MULTIPLAYER DRAWING GAME
+    </div>
+
+    <!-- Main Heading -->
+    <h1 class="hero-title animate-fade-in-up" id="heroTitle">
+      <span class="title-draw">DRAW</span> <span class="title-amp">&amp;</span> <span class="title-guess">GUESS</span>
+    </h1>
+
+    <!-- Colorful Tagline -->
+    <p class="hero-tagline animate-fade-in-up" id="heroTagline">
+      "Draw it. <span>Guess it.</span> Win it."
+    </p>
+
+    <!-- Description -->
+    <p class="hero-description animate-fade-in-up" id="heroDesc">
+      The ultimate real-time multiplayer showdown. Sketch visual clues for legendary songs or blockbusters while friends race against the clock to guess!
+    </p>
+
+    <!-- Main Mode Action Buttons -->
+    <div class="hero-mode-actions animate-fade-in-up" id="heroModeActions">
+      <a href="{{ url_for('game.create_room') }}?mode=song" class="mode-cta-btn song-cta-btn" id="heroSongBtn" aria-label="Play Guess the Song Mode">
+        <span class="btn-glow-aura"></span>
+        <span class="btn-icon">🎵</span>
+        <span class="btn-label">GUESS THE SONG</span>
+        <span class="btn-arrow">&rarr;</span>
+      </a>
+
+      <a href="{{ url_for('game.create_room') }}?mode=movie" class="mode-cta-btn movie-cta-btn" id="heroMovieBtn" aria-label="Play Guess the Movie Mode">
+        <span class="btn-glow-aura"></span>
+        <span class="btn-icon">🎬</span>
+        <span class="btn-label">GUESS THE MOVIE</span>
+        <span class="btn-arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Secondary Actions -->
+    <div class="hero-secondary-actions animate-fade-in-up" id="heroSecondaryActions">
+      <a href="{{ url_for('game.create_room') }}" class="glass-pill-btn" id="heroCreateRoomBtn">
+        <span class="pill-icon">➕</span>
+        <span>CREATE ROOM</span>
+      </a>
+      <a href="{{ url_for('game.join_room') }}" class="glass-pill-btn" id="heroJoinRoomBtn">
+        <span class="pill-icon">🚀</span>
+        <span>JOIN ROOM</span>
+      </a>
+      <a href="{{ url_for('main.modes') }}" class="glass-pill-btn" id="heroExploreModesBtn">
+        <span class="pill-icon">✨</span>
+        <span>EXPLORE MODES</span>
+      </a>
+    </div>
+
+    <!-- Bottom Glass Feature Bar -->
+    <div class="hero-feature-bar animate-fade-in-up" id="heroFeatureBar">
+      <div class="feature-bar-item">
+        <span class="f-icon">👥</span>
+        <div class="f-text">
+          <span class="f-title">Real-time</span>
+          <span class="f-sub">Multiplayer</span>
+        </div>
+      </div>
+      <div class="feature-bar-divider" aria-hidden="true"></div>
+
+      <div class="feature-bar-item">
+        <span class="f-icon">🎨</span>
+        <div class="f-text">
+          <span class="f-title">Drawing</span>
+          <span class="f-sub">Canvas</span>
+        </div>
+      </div>
+      <div class="feature-bar-divider" aria-hidden="true"></div>
+
+      <div class="feature-bar-item">
+        <span class="f-icon">💬</span>
+        <div class="f-text">
+          <span class="f-title">Live</span>
+          <span class="f-sub">Guessing</span>
+        </div>
+      </div>
+      <div class="feature-bar-divider" aria-hidden="true"></div>
+
+      <div class="feature-bar-item">
+        <span class="f-icon">🏆</span>
+        <div class="f-text">
+          <span class="f-title">Competitive</span>
+          <span class="f-sub">Scoring</span>
+        </div>
+      </div>
+      <div class="feature-bar-divider" aria-hidden="true"></div>
+
+      <div class="feature-bar-item">
+        <span class="f-icon">🔒</span>
+        <div class="f-text">
+          <span class="f-title">Private</span>
+          <span class="f-sub">Rooms</span>
+        </div>
+      </div>
+      <div class="feature-bar-divider" aria-hidden="true"></div>
+
+      <div class="feature-bar-item">
+        <span class="f-icon">👑</span>
+        <div class="f-text">
+          <span class="f-title">Leaderboards</span>
+          <span class="f-sub">Rankings</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- How It Works Section (6 Steps) -->
+<section class="pipeline-section">
+  <div class="section-title-wrap">
+    <div class="section-badge">QUICK GUIDE</div>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Jump in, sketch the clues, and conquer the leaderboard in six straightforward steps</p>
+  </div>
+
+  <div class="flow-grid-six">
+    <div class="flow-card">
+      <div class="flow-number">1</div>
+      <div class="flow-icon">🎯</div>
+      <h3>Choose a Mode</h3>
+      <p>Pick either <strong>Guess the Song</strong> (English hits, Hollywood OSTs) or <strong>Guess the Movie</strong> (blockbusters & classics).</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">2</div>
+      <div class="flow-icon">🚪</div>
+      <h3>Create or Join</h3>
+      <p>Create a private room with custom rounds & timer, or paste a 5-letter code to join your friends in the lobby.</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">3</div>
+      <div class="flow-icon">🎨</div>
+      <h3>One Player Draws</h3>
+      <p>Each round, a designated drawer receives a top-secret title and brings it to life using responsive canvas tools.</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">4</div>
+      <div class="flow-icon">💬</div>
+      <h3>Everyone Guesses</h3>
+      <p>All other players watch the canvas strokes stream in real time and fire their guesses into the rapid chat box.</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">5</div>
+      <div class="flow-icon">⏱️</div>
+      <h3>Fastest Score More</h3>
+      <p>Time-decay scoring rewards lightning reflexes. Correct guessers earn top points, and clear drawers earn bonuses!</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-number">6</div>
+      <div class="flow-icon">🏆</div>
+      <h3>Highest Score Wins</h3>
+      <p>Drawers rotate every round. After the final showdown, celebrate on the podium and challenge each other to rematch!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Game Modes Showcase Section -->
+<section class="modes-showcase-section">
+  <div class="section-title-wrap">
+    <div class="section-badge">GAME MODES</div>
+    <h2 class="section-title">Two Immersive Entertainment Arenas</h2>
+    <p class="section-subtitle">Choose your specialty or battle across both domains</p>
+  </div>
+
+  <div class="showcase-grid">
+    <!-- Song Mode Card -->
+    <div class="mode-card song-mode-card">
+      <div class="mode-card-header">
+        <div class="mode-badge-pill song-badge">🎵 GUESS THE SONG</div>
+        <span class="mode-difficulty">3 Categories &bull; 3 Difficulties</span>
+      </div>
+      <div class="mode-card-icon-wrap song-icon-glow">
+        <span class="mode-hero-icon">🎵</span>
+      </div>
+      <h3 class="mode-card-title">Guess the Song</h3>
+      <p class="mode-card-tagline">"Draw the clues. Guess the song."</p>
+      <p class="mode-card-desc">
+        Sketch iconic music videos, unforgettable album covers, chart-topping lyrics, and artist trademarks. From Queen and Adele to The Weeknd and Billie Eilish!
+      </p>
+
+      <div class="mode-tags-list">
+        <span class="tag song-tag">🎤 English Pop & Rock</span>
+        <span class="tag song-tag">🎬 Hollywood Soundtracks</span>
+        <span class="tag song-tag">🔥 Trending English</span>
+      </div>
+
+      <div class="mode-card-actions">
+        <a href="{{ url_for('game.create_room') }}?mode=song" class="btn btn-primary btn-block">
+          PLAY SONG MODE &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Movie Mode Card -->
+    <div class="mode-card movie-mode-card">
+      <div class="mode-card-header">
+        <div class="mode-badge-pill movie-badge">🎬 GUESS THE MOVIE</div>
+        <span class="mode-difficulty">4 Categories &bull; 3 Difficulties</span>
+      </div>
+      <div class="mode-card-icon-wrap movie-icon-glow">
+        <span class="mode-hero-icon">🎬</span>
+      </div>
+      <h3 class="mode-card-title">Guess the Movie</h3>
+      <p class="mode-card-tagline">"Draw the scene. Guess the movie."</p>
+      <p class="mode-card-desc">
+        Become the director! Draw spaceships for Interstellar, spinning tops for Inception, sinking ships for Titanic, or dinosaurs for Jurassic Park.
+      </p>
+
+      <div class="mode-tags-list">
+        <span class="tag movie-tag">🎬 Hollywood Hits</span>
+        <span class="tag movie-tag">🔥 Trending Cinema</span>
+        <span class="tag movie-tag">⭐ Popular Blockbusters</span>
+        <span class="tag movie-tag">🕰️ Timeless Classics</span>
+      </div>
+
+      <div class="mode-card-actions">
+        <a href="{{ url_for('game.create_room') }}?mode=movie" class="btn btn-amber btn-block">
+          PLAY MOVIE MODE &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="section-title-wrap">
+    <div class="section-badge">BUILT FOR ESPORTS &amp; FUN</div>
+    <h2 class="section-title">Engineered For Competition</h2>
+    <p class="section-subtitle">High-performance real-time mechanics built with modern WebSockets and HTML5 Canvas</p>
+  </div>
+
+  <div class="features-grid-seven">
+    <div class="feature-box">
+      <div class="feature-icon-wrap">⚡</div>
+      <h3>Real-Time Multiplayer</h3>
+      <p>Vector strokes stream instantly via WebSockets with ultra-low latency across all devices.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-icon-wrap">🎨</div>
+      <h3>Drawing Canvas</h3>
+      <p>Precision HTML5 Canvas with pencils, erasers, stroke sizes, rich palettes, undo, redo, and touch support.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-icon-wrap">💬</div>
+      <h3>Live Guessing</h3>
+      <p>Server-authoritative guess validation guarantees immediate feedback and fair play without cheating.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-icon-wrap">⏱️</div>
+      <h3>Competitive Scoring</h3>
+      <p>Time-decay algorithms award faster responses with maximum points, plus bonus rewards for clear drawers.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-icon-wrap">🔒</div>
+      <h3>Private Rooms</h3>
+      <p>Instantly generate unique 5-letter codes. Host private games with customized round counts and timers.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-icon-wrap">🏆</div>
+      <h3>Leaderboards</h3>
+      <p>Compete for the crown with detailed all-time statistics, win rates, and highest score tracking.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-icon-wrap">🔥</div>
+      <h3>Trending Content</h3>
+      <p>Curated libraries of the freshest chart-topping music tracks and the hottest Hollywood cinema releases.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

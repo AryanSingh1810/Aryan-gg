@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Choose Game Mode - DRAW & GUESS 🎨{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mode.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="mode-page-container">
+  <!-- Mode Selection Header -->
+  <div class="mode-header">
+    <div class="mode-header-badge">ENTERTAINMENT ARENA</div>
+    <h1 class="mode-main-title">Select Your Game Mode</h1>
+    <p class="mode-main-subtitle">Choose your creative arena. Draw visual clues for top-tier international tracks or blockbuster cinema!</p>
+  </div>
+
+  <!-- Dual Mode Cards Grid -->
+  <div class="mode-cards-container">
+    <!-- Song Mode Card -->
+    <div class="mode-select-card song-theme-card" id="songModeCard" data-mode="song">
+      <div class="card-glow-indicator"></div>
+      
+      <div class="card-top-row">
+        <div class="card-badge song-badge-accent">🎵 MUSIC ARENA</div>
+        <div class="card-stats">3 Categories &bull; 3 Difficulties</div>
+      </div>
+
+      <div class="card-icon-sphere song-sphere">
+        <span class="card-icon">🎵</span>
+      </div>
+
+      <h2 class="card-mode-title">GUESS THE SONG</h2>
+      <p class="card-mode-tagline">"Draw the clues. Guess the song."</p>
+
+      <p class="card-mode-desc">
+        Transform melodies into visual sketches! Draw album covers, signature lyrics, instruments, and visual puns. Your friends race against the clock to name the hit track.
+      </p>
+
+      <div class="card-features-section">
+        <div class="feature-label">CATEGORIES INCLUDED</div>
+        <div class="category-pills">
+          <span class="pill pill-song">🎤 English Pop &amp; Rock</span>
+          <span class="pill pill-song">🎬 Hollywood Soundtracks</span>
+          <span class="pill pill-song">🔥 Trending English</span>
+        </div>
+      </div>
+
+      <div class="difficulty-indicator-row">
+        <span class="diff-tag diff-easy">🟢 Easy</span>
+        <span class="diff-tag diff-med">🟡 Medium</span>
+        <span class="diff-tag diff-hard">🔴 Hard</span>
+      </div>
+
+      <div class="card-action-buttons">
+        <a href="{{ url_for('game.create_room') }}?mode=song" class="btn btn-primary btn-lg select-mode-btn" data-mode="song">
+          <span>🎵</span> CREATE SONG ROOM
+        </a>
+        <a href="{{ url_for('game.join_room') }}?mode=song" class="btn btn-outline btn-md join-mode-btn" data-mode="song">
+          JOIN WITH CODE &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Movie Mode Card -->
+    <div class="mode-select-card movie-theme-card" id="movieModeCard" data-mode="movie">
+      <div class="card-glow-indicator"></div>
+
+      <div class="card-top-row">
+        <div class="card-badge movie-badge-accent">🎬 CINEMA ARENA</div>
+        <div class="card-stats">4 Categories &bull; 3 Difficulties</div>
+      </div>
+
+      <div class="card-icon-sphere movie-sphere">
+        <span class="card-icon">🎬</span>
+      </div>
+
+      <h2 class="card-mode-title">GUESS THE MOVIE</h2>
+      <p class="card-mode-tagline">"Draw the scene. Guess the movie."</p>
+
+      <p class="card-mode-desc">
+        Take the director's chair! Bring famous Hollywood scenes, iconic props, superhero gadgets, and shocking plot twists to the canvas without uttering a single sound.
+      </p>
+
+      <div class="card-features-section">
+        <div class="feature-label">CATEGORIES INCLUDED</div>
+        <div class="category-pills">
+          <span class="pill pill-movie">🎬 Hollywood Blockbusters</span>
+          <span class="pill pill-movie">🔥 Trending Movies</span>
+          <span class="pill pill-movie">⭐ Popular Favorites</span>
+          <span class="pill pill-movie">🕰️ Timeless Classics</span>
+        </div>
+      </div>
+
+      <div class="difficulty-indicator-row">
+        <span class="diff-tag diff-easy">🟢 Easy</span>
+        <span class="diff-tag diff-med">🟡 Medium</span>
+        <span class="diff-tag diff-hard">🔴 Hard</span>
+      </div>
+
+      <div class="card-action-buttons">
+        <a href="{{ url_for('game.create_room') }}?mode=movie" class="btn btn-amber btn-lg select-mode-btn" data-mode="movie">
+          <span>🎬</span> CREATE MOVIE ROOM
+        </a>
+        <a href="{{ url_for('game.join_room') }}?mode=movie" class="btn btn-outline btn-md join-mode-btn" data-mode="movie">
+          JOIN WITH CODE &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Future Modes Roadmap Teaser -->
+  <div class="future-modes-teaser">
+    <div class="teaser-header">
+      <span class="teaser-badge">EXPANDING MULTIVERSE</span>
+      <h3>Upcoming Future Arenas</h3>
+    </div>
+    <div class="future-modes-row">
+      <div class="future-mode-item">
+        <span class="future-icon">📺</span>
+        <div class="future-info">
+          <h4>TV Shows</h4>
+          <span class="future-status">In Development</span>
+        </div>
+      </div>
+      <div class="future-mode-item">
+        <span class="future-icon">🎮</span>
+        <div class="future-info">
+          <h4>Video Games</h4>
+          <span class="future-status">Planned</span>
+        </div>
+      </div>
+      <div class="future-mode-item">
+        <span class="future-icon">⭐</span>
+        <div class="future-info">
+          <h4>Celebrities</h4>
+          <span class="future-status">Planned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/mode.js') }}"></script>
+{% endblock %}

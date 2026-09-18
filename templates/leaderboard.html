@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Leaderboard - DRAW & GUESS 🏆{% endblock %}
+
+{% block content %}
+<div style="max-width: 980px; margin: 3rem auto; padding: 0 1.5rem;">
+  <div class="glass-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; display: flex; align-items: center; gap: 0.75rem;">
+          <span>🏆</span> Global Leaderboard
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Top players across all English, Hollywood, and Trending matches</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div style="display: flex; gap: 0.5rem; background: rgba(249, 115, 22, 0.08); padding: 0.35rem; border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
+        <a href="?period=all" class="btn btn-sm {% if current_period == 'all' %}btn-primary{% else %}btn-outline{% endif %}">All Time</a>
+        <a href="?period=monthly" class="btn btn-sm {% if current_period == 'monthly' %}btn-primary{% else %}btn-outline{% endif %}">Monthly</a>
+        <a href="?period=weekly" class="btn btn-sm {% if current_period == 'weekly' %}btn-primary{% else %}btn-outline{% endif %}">Weekly</a>
+        <a href="?period=daily" class="btn btn-sm {% if current_period == 'daily' %}btn-primary{% else %}btn-outline{% endif %}">Daily</a>
+      </div>
+    </div>
+
+    <!-- Leaderboard Table -->
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border-glass); color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">
+            <th style="padding: 1rem 1rem;">Rank</th>
+            <th style="padding: 1rem 1rem;">Player</th>
+            <th style="padding: 1rem 1rem; text-align: center;">Matches</th>
+            <th style="padding: 1rem 1rem; text-align: center;">Wins</th>
+            <th style="padding: 1rem 1rem; text-align: center;">Best Score</th>
+            <th style="padding: 1rem 1rem; text-align: right;">Total Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if top_users %}
+            {% for user in top_users %}
+              <tr style="border-bottom: 1px solid rgba(249, 115, 22, 0.12); transition: background 0.2s;">
+                <td style="padding: 1rem 1rem; font-weight: 800; font-family: var(--font-heading);">
+                  {% if loop.index == 1 %}🥇 1
+                  {% elif loop.index == 2 %}🥈 2
+                  {% elif loop.index == 3 %}🥉 3
+                  {% else %}{{ loop.index }}
+                  {% endif %}
+                </td>
+                <td style="padding: 1rem 1rem; font-weight: 700; color: var(--text-primary);">
+                  🎮 {{ user.username }}
+                </td>
+                <td style="padding: 1rem 1rem; text-align: center; color: var(--text-secondary);">
+                  {{ user.games_played }}
+                </td>
+                <td style="padding: 1rem 1rem; text-align: center; color: var(--neon-gold); font-weight: 700;">
+                  {{ user.games_won }}
+                </td>
+                <td style="padding: 1rem 1rem; text-align: center; color: var(--neon-cyan); font-weight: 700;">
+                  {{ user.best_score }}
+                </td>
+                <td style="padding: 1rem 1rem; text-align: right; font-weight: 800; font-family: var(--font-heading); color: var(--text-primary);">
+                  {{ user.total_points }} pts
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="6" style="padding: 3rem; text-align: center; color: var(--text-muted);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎵</div>
+                No matches recorded yet. Create a room and be the first on the leaderboard!
+              </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

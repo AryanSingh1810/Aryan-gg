@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Log In - Draw the Song{% endblock %}
+
+{% block content %}
+<div style="max-width: 480px; margin: 4rem auto; padding: 0 1.5rem;">
+  <div class="glass-card">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎧</div>
+      <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">Log In</h1>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">Track your match wins and appear on the leaderboard</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('auth.login') }}">
+      <div class="form-group">
+        <label class="form-label" for="login_id">Username or Email</label>
+        <input 
+          type="text" 
+          id="login_id" 
+          name="login_id" 
+          class="form-control" 
+          placeholder="Enter username or email" 
+          value="{{ login_id if login_id else '' }}" 
+          required 
+          autocomplete="username"
+        >
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          class="form-control" 
+          placeholder="Enter your password" 
+          required 
+          autocomplete="current-password"
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">
+        LOG IN
+      </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+      Don't have an account? <a href="{{ url_for('auth.register') }}" style="color: var(--neon-cyan); text-decoration: none; font-weight: 600;">Sign up</a>
+      <div style="margin-top: 0.5rem;">
+        <a href="{{ url_for('game.create_room') }}" style="color: var(--text-secondary); text-decoration: underline;">Or play instantly as guest</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

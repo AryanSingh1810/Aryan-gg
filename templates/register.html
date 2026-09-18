@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Draw the Song{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 3.5rem auto; padding: 0 1.5rem;">
+  <div class="glass-card">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌟</div>
+      <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">Create Account</h1>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">Join the global Draw the Song community</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('auth.register') }}">
+      <div class="form-group">
+        <label class="form-label" for="username">Username</label>
+        <input 
+          type="text" 
+          id="username" 
+          name="username" 
+          class="form-control" 
+          placeholder="e.g. BeatMaster" 
+          value="{{ form.username if form else '' }}" 
+          required 
+          autocomplete="username"
+        >
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          class="form-control" 
+          placeholder="you@example.com" 
+          value="{{ form.email if form else '' }}" 
+          required 
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="favorite_category">Favorite Music Category</label>
+        <select id="favorite_category" name="favorite_category" class="form-control form-select">
+          <option value="English">English Pop & Rock</option>
+          <option value="Hollywood">Hollywood Soundtracks</option>
+          <option value="Trending">Trending Hits</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password (min 6 characters)</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          class="form-control" 
+          placeholder="Create a strong password" 
+          required 
+          autocomplete="new-password"
+        >
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="confirm_password">Confirm Password</label>
+        <input 
+          type="password" 
+          id="confirm_password" 
+          name="confirm_password" 
+          class="form-control" 
+          placeholder="Confirm your password" 
+          required 
+          autocomplete="new-password"
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">
+        CREATE ACCOUNT
+      </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+      Already have an account? <a href="{{ url_for('auth.login') }}" style="color: var(--neon-cyan); text-decoration: none; font-weight: 600;">Log in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

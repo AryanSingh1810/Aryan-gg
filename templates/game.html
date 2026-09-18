@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Room {{ room_code }} - Draw the Song{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lobby.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Global Config Injection for JS -->
+<script>
+  window.DTS_CONFIG = {
+    roomCode: {{ room_code | tojson }},
+    playerName: {{ player_name | tojson }},
+    userId: {{ user_id | tojson }},
+    category: {{ category | tojson }},
+    rounds: {{ rounds }},
+    duration: {{ duration }},
+    maxPlayers: {{ max_players }}
+  };
+</script>
+
+<!-- =========================================================
+     VIEW 1: LOBBY VIEW (WAITING ROOM)
+     ========================================================= -->
+<div id="lobbyView" class="lobby-container">
+  <div class="lobby-header-card">
+    <div class="lobby-title-wrap">
+      <h1>Game Lobby</h1>
+      <p class="lobby-subtitle">Share the room code with your friends to play together</p>
+    </div>
+
+    <div class="room-code-badge">
+      <div>
+        <div class="room-code-label">Room Code</div>
+        <div class="room-code-value">{{ room_code }}</div>
+      </div>
+      <button id="copyRoomCodeBtn" class="copy-btn">
+        📋 Copy Code
+      </button>
+    </div>
+  </div>
+
+  <!-- Settings Overview -->
+  <div class="lobby-settings-grid">
+    <div class="settings-card">
+      <h4>Music Category</h4>
+      <div class="setting-val">{{ category }}</div>
+    </div>
+    <div class="settings-card">
+      <h4>Rounds</h4>
+      <div class="setting-val">{{ rounds }} Rounds</div>
+    </div>
+    <div class="settings-card">
+      <h4>Round Duration</h4>
+      <div class="setting-val">{{ duration }} Seconds</div>
+    </div>
+  </div>
+
+  <!-- Players List Grid -->
+  <div class="players-panel">
+    <div class="panel-top-row">
+      <div class="panel-title">
+        <span>🎮 Connected Players</span>
+      </div>
+      <div id="lobbyPlayerCount" class="player-count-pill">
+        1 / {{ max_players }}
+      </div>
+    </div>
+
+    <div id="lobbyPlayersGrid" class="players-grid">
+      <!-- Populated dynamically via JS -->
+      <div class="player-card is-host">
+        <div class="player-avatar">🎮</div>
+        <div class="player-name">{{ player_name }}</div>
+        <span class="player-role-badge host">👑 Host</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lobby Actions -->
+  <div class="lobby-actions">
+    <div class="lobby-status-msg">
+      <div class="pulse-dot"></div>
+      <span id="lobbyStatusText">Waiting for players to join (2 minimum)...</span>
+    </div>
+
+    <button id="startGameBtn" class="btn btn-primary btn-lg" disabled>
+      🚀 START GAME
+    </button>
+  </div>
+</div>
+
+<!-- =========================================================
+     VIEW 2: ACTIVE GAME ARENA
+     ========================================================= -->
+<div id="gameView" class="game-arena" style="display: none;">
+  <!-- Top Bar -->
+  <div class="game-top-bar">
+    <div class="top-bar-item">
+      <span id="roundDisplay" class="top-bar-val">Round 1 / {{ rounds }}</span>
+    </div>
+
+    <!-- Authoritative Countdown Timer -->
+    <div class="timer-container">
+      <span>⏱️</span>
+      <span id="timerDisplay" class="timer-clock">{{ duration }}</span>
+    </div>
+
+    <!-- Category Pill -->
+    <div class="top-bar-item">
+      <span class="top-bar-label">Category:</span>
+      <span id="categoryDisplay" class="top-bar-val">{{ category }}</span>
+    </div>
+
+    <!-- Secret Clue Mask or Drawer Song Display -->
+    <div class="secret-hint-container">
+      <div id="secretHintText" class="secret-hint-text">
+        _ _ _ _ _   _ _ _ _ _
+      </div>
+      <div id="drawerSecretCard" class="drawer-secret-card" style="display: none;">
+        <span>🎨 YOUR SECRET SONG:</span>
+        <span id="drawerSongTitle" class="title">Song Title</span>
+        <span id="drawerSongMeta" class="meta">(Artist)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Game Arena Grid -->
+  <div class="game-main-grid">
+    <!-- Center / Left: Canvas Area -->
+    <div class="canvas-wrapper">
+      <div class="canvas-viewport">
+        <canvas id="drawingCanvas"></canvas>
+      </div>
+
+      <!-- Drawing Toolbar (Only displayed to active drawer) -->
+      <div id="canvasToolbar" class="canvas-toolbar" style="display: none;">
+        <!-- Tools -->
+        <div class="tool-group">
+          <button id="pencilToolBtn" class="tool-btn active" title="Pencil">✏️</button>
+          <button id="eraserToolBtn" class="tool-btn" title="Eraser">🧹</button>
+        </div>
+
+        <!-- Brush Sizes -->
+        <div class="tool-group">
+          <button class="size-btn" data-size="3" title="Fine (3px)">
+            <div class="size-circle" style="width: 4px; height: 4px;"></div>
+          </button>
+          <button class="size-btn active" data-size="6" title="Medium (6px)">
+            <div class="size-circle" style="width: 7px; height: 7px;"></div>
+          </button>
+          <button class="size-btn" data-size="12" title="Thick (12px)">
+            <div class="size-circle" style="width: 12px; height: 12px;"></div>
+          </button>
+          <button class="size-btn" data-size="24" title="Chunky (24px)">
+            <div class="size-circle" style="width: 18px; height: 18px;"></div>
+          </button>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="palette-swatches">
+          <div class="color-swatch active" style="background: #000000;" data-color="#000000"></div>
+          <div class="color-swatch" style="background: #ef4444;" data-color="#ef4444"></div>
+          <div class="color-swatch" style="background: #f97316;" data-color="#f97316"></div>
+          <div class="color-swatch" style="background: #eab308;" data-color="#eab308"></div>
+          <div class="color-swatch" style="background: #22c55e;" data-color="#22c55e"></div>
+          <div class="color-swatch" style="background: #06b6d4;" data-color="#06b6d4"></div>
+          <div class="color-swatch" style="background: #3b82f6;" data-color="#3b82f6"></div>
+          <div class="color-swatch" style="background: #a855f7;" data-color="#a855f7"></div>
+        </div>
+
+        <!-- Actions (Undo, Redo, Clear) -->
+        <div class="tool-group">
+          <button id="undoCanvasBtn" class="tool-btn" title="Undo">↩️</button>
+          <button id="redoCanvasBtn" class="tool-btn" title="Redo">↪️</button>
+          <button id="clearCanvasBtn" class="tool-btn" title="Clear Canvas">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar: Scoreboard & Chat -->
+    <div class="game-sidebar">
+      <!-- Players Scoreboard -->
+      <div class="sidebar-panel sidebar-players-panel">
+        <div class="sidebar-panel-header">
+          <span>Players</span>
+          <span>Score</span>
+        </div>
+        <div id="playersScoreList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Live Guess / Chat Log -->
+      <div class="sidebar-panel sidebar-chat-panel">
+        <div class="sidebar-panel-header">
+          <span>Live Guesses</span>
+        </div>
+        <div id="chatMessagesList" class="chat-messages-container">
+          <div class="chat-msg system">Welcome to Draw the Song! Guess the song title to earn points!</div>
+        </div>
+
+        <!-- Guess Input Form -->
+        <div class="guess-form-wrap">
+          <form id="guessForm" class="guess-form">
+            <input 
+              type="text" 
+              id="guessInput" 
+              class="guess-input" 
+              placeholder="Type your guess here..." 
+              autocomplete="off"
+              maxlength="80"
+            >
+            <button type="submit" class="guess-submit-btn">SEND</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL OVERLAYS
+     ========================================================= -->
+
+<!-- Round End Reveal Overlay -->
+<div id="roundOverlay" class="game-overlay-backdrop" style="display: none;">
+  <div class="round-reveal-modal">
+    <div class="reveal-heading">🎵 Secret Song Revealed</div>
+    <div id="revealSongTitle" class="reveal-title">Blinding Lights</div>
+    <div id="revealSongArtist" class="reveal-artist">by The Weeknd</div>
+    <div id="revealSongMovie" class="reveal-movie-badge" style="display: none;">Soundtrack</div>
+    
+    <div id="revealRoundScores"></div>
+
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem;">
+      Next round starting in a few seconds...
+    </p>
+  </div>
+</div>
+
+<!-- Final Game Over Podium Overlay -->
+<div id="gameOverOverlay" class="game-overlay-backdrop" style="display: none;">
+  <div class="round-reveal-modal" style="max-width: 600px;">
+    <div style="font-size: 2.5rem; margin-bottom: 0.25rem;">🏆</div>
+    <div class="reveal-heading">Game Completed</div>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem;">Final Leaderboard</h2>
+
+    <!-- 3-Step Podium -->
+    <div id="podiumContainer" class="podium-container"></div>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+      <button id="playAgainBtn" class="btn btn-primary btn-lg" style="display: none;">
+        🔄 PLAY AGAIN
+      </button>
+      <a href="{{ url_for('main.index') }}" class="btn btn-outline btn-lg">
+        🏠 RETURN HOME
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/websocket.js') }}"></script>
+<script src="{{ url_for('static', filename='js/canvas.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+{% endblock %}

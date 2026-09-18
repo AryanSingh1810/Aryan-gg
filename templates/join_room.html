@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Join Room - DRAW & GUESS 🎮{% endblock %}
+
+{% block content %}
+<div style="max-width: 520px; margin: 3.5rem auto; padding: 0 1.5rem;">
+  <div class="glass-card">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎮</div>
+      <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">Join Game Room</h1>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">Enter your friend's room code to enter the game lobby</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('game.join_room') }}">
+      <!-- Player Name -->
+      <div class="form-group">
+        <label class="form-label" for="player_name">Your Nickname</label>
+        <input 
+          type="text" 
+          id="player_name" 
+          name="player_name" 
+          class="form-control" 
+          placeholder="e.g. MelodyQueen" 
+          value="{{ form.player_name if form else default_name }}" 
+          required 
+          maxlength="20"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Room Code -->
+      <div class="form-group">
+        <label class="form-label" for="room_code">5-Character Room Code</label>
+        <input 
+          type="text" 
+          id="room_code" 
+          name="room_code" 
+          class="form-control" 
+          placeholder="e.g. X7K92" 
+          value="{{ form.room_code if form else code_prefill }}" 
+          required 
+          maxlength="10"
+          style="text-transform: uppercase; letter-spacing: 3px; font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; text-align: center;"
+          autocomplete="off"
+        >
+      </div>
+
+      <button type="submit" class="btn btn-cyan btn-lg" style="width: 100%; margin-top: 1rem;">
+        ⚡ JOIN GAME
+      </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+      Want to host your own game? <a href="{{ url_for('game.create_room') }}" style="color: var(--neon-purple); text-decoration: none; font-weight: 600;">Create a room</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

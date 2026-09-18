@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Create Room - DRAW & GUESS 🎨{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 3rem auto; padding: 0 1.5rem;">
+  <div class="glass-card">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="font-size: 2.75rem; margin-bottom: 0.5rem;">
+        {% if mode == 'movie' %}🎬{% else %}🎵{% endif %}
+      </div>
+      <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">
+        Create {% if mode == 'movie' %}Movie{% else %}Song{% endif %} Room
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">
+        {{ mode_info.tagline if mode_info else "Draw it. Guess it. Win it." }}
+      </p>
+
+      <!-- Mode Switcher Tabs -->
+      <div style="display: inline-flex; background: rgba(255, 255, 255, 0.06); padding: 4px; border-radius: var(--radius-full); margin-top: 1.25rem; border: 1px solid var(--border-glass);">
+        <a href="{{ url_for('game.create_room') }}?mode=song" style="padding: 0.45rem 1.25rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 700; text-decoration: none; transition: all 0.2s; {% if mode == 'song' %}background: var(--neon-purple); color: #fff; box-shadow: 0 2px 10px rgba(168,85,247,0.5);{% else %}color: var(--text-secondary);{% endif %}">
+          🎵 Song Mode
+        </a>
+        <a href="{{ url_for('game.create_room') }}?mode=movie" style="padding: 0.45rem 1.25rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 700; text-decoration: none; transition: all 0.2s; {% if mode == 'movie' %}background: var(--neon-amber); color: #000; box-shadow: 0 2px 10px rgba(245,158,11,0.5);{% else %}color: var(--text-secondary);{% endif %}">
+          🎬 Movie Mode
+        </a>
+      </div>
+    </div>
+
+    <form method="POST" action="{{ url_for('game.create_room') }}?mode={{ mode }}">
+      <input type="hidden" name="mode" value="{{ mode }}">
+
+      <!-- Player Name -->
+      <div class="form-group">
+        <label class="form-label" for="player_name">Your Nickname</label>
+        <input 
+          type="text" 
+          id="player_name" 
+          name="player_name" 
+          class="form-control" 
+          placeholder="e.g. Maverick" 
+          value="{{ form.player_name if form else default_name }}" 
+          required 
+          maxlength="20"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Category Selection -->
+      <div class="form-group">
+        <label class="form-label" for="category">
+          {% if mode == 'movie' %}Movie Category{% else %}Song Category{% endif %}
+        </label>
+        <select id="category" name="category" class="form-control form-select">
+          {% for cat in categories %}
+            <option value="{{ cat }}" {% if form and form.category == cat %}selected{% endif %}>
+              {{ cat }}
+              {% if mode == 'song' %}
+                {% if cat == 'English' %}(Pop, Rock & Classics){% elif cat == 'Hollywood' %}(Movie Soundtracks){% elif cat == 'Trending' %}(Viral & Chart Hits){% endif %}
+              {% elif mode == 'movie' %}
+                {% if cat == 'Hollywood' %}(Blockbusters & Sci-Fi){% elif cat == 'Trending' %}(Recent Hit Releases){% elif cat == 'Popular' %}(Fan Favorites & Franchises){% elif cat == 'Classic' %}(Timeless Oscar Legends){% endif %}
+              {% endif %}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Settings Grid: Rounds & Duration -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label class="form-label" for="rounds">Rounds (3–10)</label>
+          <input 
+            type="number" 
+            id="rounds" 
+            name="rounds" 
+            class="form-control" 
+            min="3" 
+            max="10" 
+            value="{{ form.rounds if form else 5 }}" 
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="round_duration">Timer (30–90s)</label>
+          <input 
+            type="number" 
+            id="round_duration" 
+            name="round_duration" 
+            class="form-control" 
+            min="30" 
+            max="90" 
+            step="10" 
+            value="{{ form.round_duration if form else 60 }}" 
+            required
+          >
+        </div>
+      </div>
+
+      <!-- Max Players -->
+      <div class="form-group">
+        <label class="form-label" for="max_players">Max Players (2–8)</label>
+        <input 
+          type="number" 
+          id="max_players" 
+          name="max_players" 
+          class="form-control" 
+          min="2" 
+          max="8" 
+          value="{{ form.max_players if form else 8 }}" 
+          required
+        >
+      </div>
+
+      <button type="submit" class="btn {% if mode == 'movie' %}btn-amber{% else %}btn-primary{% endif %} btn-lg" style="width: 100%; margin-top: 1rem;">
+        🚀 CREATE &amp; JOIN LOBBY
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Player Profile - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 860px; margin: 3rem auto; padding: 0 1.5rem;">
+  <div class="glass-card" style="margin-bottom: 2rem;">
+    <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 0 20px var(--neon-purple-glow);">
+        🎧
+      </div>
+      <div>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.25rem;">{{ user.username }}</h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Member since {{ user.created_at.strftime('%B %Y') if user.created_at else '2026' }} &bull; Favorite: <span style="color: var(--neon-cyan); font-weight: 700;">{{ user.favorite_category }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+    <div class="glass-card" style="padding: 1.5rem; text-align: center;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 0.5rem;">Matches Played</div>
+      <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-primary);">{{ user.games_played }}</div>
+    </div>
+
+    <div class="glass-card" style="padding: 1.5rem; text-align: center;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 0.5rem;">Victories</div>
+      <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--neon-gold);">{{ user.games_won }}</div>
+    </div>
+
+    <div class="glass-card" style="padding: 1.5rem; text-align: center;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 0.5rem;">Total Points</div>
+      <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--neon-cyan);">{{ user.total_points }}</div>
+    </div>
+
+    <div class="glass-card" style="padding: 1.5rem; text-align: center;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 0.5rem;">Best Match Score</div>
+      <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--neon-purple);">{{ user.best_score }}</div>
+    </div>
+  </div>
+
+  <!-- Action Quick Links -->
+  <div style="display: flex; gap: 1rem; justify-content: center;">
+    <a href="{{ url_for('game.create_room') }}" class="btn btn-primary btn-lg">🎨 Create A Room</a>
+    <a href="{{ url_for('game.join_room') }}" class="btn btn-cyan btn-lg">🚀 Join A Room</a>
+  </div>
+</div>
+{% endblock %}

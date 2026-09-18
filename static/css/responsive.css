@@ -1,0 +1,132 @@
+/* =========================================================
+   DRAW THE SONG - RESPONSIVE STYLES
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .site-header {
+    padding: 0 1.5rem;
+  }
+
+  .game-arena {
+    padding: 0.75rem;
+  }
+
+  .game-main-grid {
+    grid-template-columns: 1fr 280px;
+    gap: 0.75rem;
+  }
+
+  .lobby-settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 0 1.25rem;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+
+  .nav-auth-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    height: 64px;
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+
+  .game-arena {
+    height: auto;
+    min-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0.5rem;
+  }
+
+  .game-top-bar {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .secret-hint-container {
+    order: 3;
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+
+  .secret-hint-text {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  /* Rearrange to mobile stacked order */
+  .game-main-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .canvas-wrapper {
+    height: 380px;
+    padding: 0.5rem;
+  }
+
+  .canvas-toolbar {
+    padding: 0.4rem 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .tool-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  .palette-swatches {
+    gap: 0.25rem;
+  }
+
+  .color-swatch {
+    width: 22px;
+    height: 22px;
+  }
+
+  .game-sidebar {
+    height: 360px;
+  }
+
+  .sidebar-players-panel {
+    max-height: 120px;
+  }
+
+  .hero-section {
+    padding: 3rem 1rem 2.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+}

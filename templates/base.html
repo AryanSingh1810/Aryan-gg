@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}DRAW & GUESS - Draw it. Guess it. Win it.{% endblock %}</title>
+  <meta name="description" content="DRAW & GUESS is the premier real-time multiplayer drawing and guessing platform. Play Guess the Song and Guess the Movie with friends!">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+  {% block extra_css %}{% endblock %}
+
+  <!-- Socket.IO CDN -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="site-header">
+      <a href="{{ url_for('main.index') }}" class="brand-logo" title="DRAW & GUESS Home">
+        <div class="brand-icon">🎨</div>
+        <div class="brand-text">
+          <span class="brand-draw">DRAW</span>
+          <span class="brand-amp">&amp;</span>
+          <span class="brand-guess">GUESS</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="{{ url_for('main.index') }}" class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">Home</a>
+        <a href="{{ url_for('main.modes') }}" class="nav-link {% if request.endpoint == 'main.modes' %}active{% endif %}"><span class="nav-icon">🎵</span> Modes</a>
+        <a href="{{ url_for('game.create_room') }}" class="nav-link {% if request.endpoint == 'game.create_room' %}active{% endif %}"><span class="nav-icon">🎬</span> Create Room</a>
+        <a href="{{ url_for('game.join_room') }}" class="nav-link {% if request.endpoint == 'game.join_room' %}active{% endif %}">Join Room</a>
+        <a href="{{ url_for('main.leaderboard') }}" class="nav-link {% if request.endpoint == 'main.leaderboard' %}active{% endif %}"><span class="nav-icon">🏆</span> Leaderboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Sound Effect Toggle -->
+        <button id="soundToggleBtn" class="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle sound effects">🔊</button>
+
+        {% if session.get('user_id') %}
+          <a href="{{ url_for('auth.profile') }}" class="btn btn-outline btn-sm nav-auth-btn">👤 {{ session.get('username') }}</a>
+          <a href="{{ url_for('auth.logout') }}" class="btn btn-outline btn-sm nav-auth-btn">Logout</a>
+        {% else %}
+          <a href="{{ url_for('auth.login') }}" class="btn btn-outline btn-sm nav-auth-btn">Log In</a>
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-sm nav-auth-btn">Sign Up</a>
+        {% endif %}
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <span class="brand-draw">DRAW</span>
+          <span class="brand-amp">&amp;</span>
+          <span class="brand-guess">GUESS</span>
+        </div>
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="mobile-drawer-links">
+        <a href="{{ url_for('main.index') }}" class="mobile-nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">🏠 Home</a>
+        <a href="{{ url_for('main.modes') }}" class="mobile-nav-link {% if request.endpoint == 'main.modes' %}active{% endif %}">🎵 Modes</a>
+        <a href="{{ url_for('game.create_room') }}" class="mobile-nav-link {% if request.endpoint == 'game.create_room' %}active{% endif %}">🎬 Create Room</a>
+        <a href="{{ url_for('game.join_room') }}" class="mobile-nav-link {% if request.endpoint == 'game.join_room' %}active{% endif %}">🚀 Join Room</a>
+        <a href="{{ url_for('main.leaderboard') }}" class="mobile-nav-link {% if request.endpoint == 'main.leaderboard' %}active{% endif %}">🏆 Leaderboard</a>
+      </div>
+      <div class="mobile-drawer-footer">
+        {% if session.get('user_id') %}
+          <a href="{{ url_for('auth.profile') }}" class="btn btn-outline btn-block">👤 {{ session.get('username') }}</a>
+          <a href="{{ url_for('auth.logout') }}" class="btn btn-outline btn-block" style="margin-top: 0.5rem;">Logout</a>
+        {% else %}
+          <a href="{{ url_for('auth.login') }}" class="btn btn-outline btn-block">Log In</a>
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-block" style="margin-top: 0.5rem;">Sign Up</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Flash Notifications / Alerts -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="toast {{ category }}">
+              <span>{{ message }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Page Content -->
+    <main style="flex: 1;">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-brand" style="margin-bottom: 0.5rem;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem;">
+            <span class="brand-draw">DRAW</span>
+            <span class="brand-amp">&amp;</span>
+            <span class="brand-guess">GUESS</span>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">Draw it. Guess it. Win it.</div>
+        </div>
+        <div class="footer-links">
+          <a href="{{ url_for('main.index') }}">Home</a>
+          <a href="{{ url_for('main.modes') }}">Game Modes</a>
+          <a href="{{ url_for('game.create_room') }}">Create Room</a>
+          <a href="{{ url_for('game.join_room') }}">Join Room</a>
+          <a href="{{ url_for('main.leaderboard') }}">Leaderboard</a>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">&copy; 2026 DRAW & GUESS &bull; Draw it. Guess it. Win it. &bull; 🎵 Guess the Song &bull; 🎬 Guess the Movie</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Global Sound Script -->
+  <script src="{{ url_for('static', filename='js/sound.js') }}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
