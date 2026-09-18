@@ -1,0 +1,470 @@
+[
+  {
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2019,
+    "movie": null,
+    "keywords": "sun, night, sunglasses, driving, lights, city"
+  },
+  {
+    "title": "Shape of You",
+    "artist": "Ed Sheeran",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2017,
+    "movie": null,
+    "keywords": "boxer, gym, heart, coffee, body, bar"
+  },
+  {
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "category": "English",
+    "difficulty": "MEDIUM",
+    "year": 1975,
+    "movie": "Bohemian Rhapsody",
+    "keywords": "crown, piano, microphone, mustache, opera"
+  },
+  {
+    "title": "Hotel California",
+    "artist": "Eagles",
+    "category": "English",
+    "difficulty": "MEDIUM",
+    "year": 1977,
+    "movie": null,
+    "keywords": "hotel, desert, palm tree, eagle, car, wine"
+  },
+  {
+    "title": "Bad Guy",
+    "artist": "Billie Eilish",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2019,
+    "movie": null,
+    "keywords": "devil, mask, green hair, bloody nose, knee pads"
+  },
+  {
+    "title": "Rolling in the Deep",
+    "artist": "Adele",
+    "category": "English",
+    "difficulty": "MEDIUM",
+    "year": 2010,
+    "movie": null,
+    "keywords": "water, ocean, fire, heart, broken, tears"
+  },
+  {
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2020,
+    "movie": null,
+    "keywords": "flying, galaxy, moon, stars, roller skates, space"
+  },
+  {
+    "title": "As It Was",
+    "artist": "Harry Styles",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2022,
+    "movie": null,
+    "keywords": "spinning, red suit, blue suit, telephone, bell"
+  },
+  {
+    "title": "Stay",
+    "artist": "The Kid LAROI & Justin Bieber",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2021,
+    "movie": null,
+    "keywords": "clock, frozen, city, rooftop, running"
+  },
+  {
+    "title": "Uptown Funk",
+    "artist": "Mark Ronson ft. Bruno Mars",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2014,
+    "movie": null,
+    "keywords": "sunglasses, pink jacket, dancing, street, fire"
+  },
+  {
+    "title": "Someone Like You",
+    "artist": "Adele",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2011,
+    "movie": null,
+    "keywords": "rain, umbrella, bridge, weeping, ring"
+  },
+  {
+    "title": "Counting Stars",
+    "artist": "OneRepublic",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2013,
+    "movie": null,
+    "keywords": "money, dollar, night sky, stars, ceiling, dancing"
+  },
+  {
+    "title": "Radioactive",
+    "artist": "Imagine Dragons",
+    "category": "English",
+    "difficulty": "MEDIUM",
+    "year": 2012,
+    "movie": null,
+    "keywords": "hazmat, toxic, dragon, puppet, cage, smoke"
+  },
+  {
+    "title": "Believer",
+    "artist": "Imagine Dragons",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2017,
+    "movie": null,
+    "keywords": "boxing, gloves, rain, fire, pain, sword"
+  },
+  {
+    "title": "Firework",
+    "artist": "Katy Perry",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2010,
+    "movie": null,
+    "keywords": "fireworks, sky, sparks, night, heart, celebration"
+  },
+  {
+    "title": "Sweet Child O Mine",
+    "artist": "Guns N Roses",
+    "category": "English",
+    "difficulty": "HARD",
+    "year": 1987,
+    "movie": null,
+    "keywords": "guitar, roses, gun, top hat, blue eyes, hair"
+  },
+  {
+    "title": "Billie Jean",
+    "artist": "Michael Jackson",
+    "category": "English",
+    "difficulty": "MEDIUM",
+    "year": 1982,
+    "movie": null,
+    "keywords": "glove, fedora, moonwalk, shining sidewalk, baby"
+  },
+  {
+    "title": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "category": "English",
+    "difficulty": "HARD",
+    "year": 1991,
+    "movie": null,
+    "keywords": "cheerleader, gym, guitar, smoke, smile"
+  },
+  {
+    "title": "Watermelon Sugar",
+    "artist": "Harry Styles",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2019,
+    "movie": null,
+    "keywords": "watermelon, beach, sun, sugar, fruit"
+  },
+  {
+    "title": "Dance Monkey",
+    "artist": "Tones and I",
+    "category": "English",
+    "difficulty": "EASY",
+    "year": 2019,
+    "movie": null,
+    "keywords": "monkey, dancing, golf course, old people, music"
+  },
+  {
+    "title": "My Heart Will Go On",
+    "artist": "Celine Dion",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 1997,
+    "movie": "Titanic",
+    "keywords": "ship, iceberg, ocean, heart, necklace, drawing"
+  },
+  {
+    "title": "Eye of the Tiger",
+    "artist": "Survivor",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 1982,
+    "movie": "Rocky III",
+    "keywords": "tiger, eyes, boxing gloves, champion, stairs"
+  },
+  {
+    "title": "Skyfall",
+    "artist": "Adele",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 2012,
+    "movie": "Skyfall (007)",
+    "keywords": "agent 007, gun, tuxedo, target, falling, stag"
+  },
+  {
+    "title": "Circle of Life",
+    "artist": "Elton John",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 1994,
+    "movie": "The Lion King",
+    "keywords": "lion, cliff, sun, baby animal, jungle, crown"
+  },
+  {
+    "title": "Shallow",
+    "artist": "Lady Gaga & Bradley Cooper",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 2018,
+    "movie": "A Star Is Born",
+    "keywords": "guitar, stage, microphone, diving, ocean, tears"
+  },
+  {
+    "title": "See You Again",
+    "artist": "Wiz Khalifa ft. Charlie Puth",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 2015,
+    "movie": "Furious 7",
+    "keywords": "sports car, sunset, highway, split road, speed"
+  },
+  {
+    "title": "Stayin Alive",
+    "artist": "Bee Gees",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 1977,
+    "movie": "Saturday Night Fever",
+    "keywords": "disco, dance floor, suit, pointing finger, bell bottoms"
+  },
+  {
+    "title": "Danger Zone",
+    "artist": "Kenny Loggins",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 1986,
+    "movie": "Top Gun",
+    "keywords": "fighter jet, aviators, aircraft carrier, runway, speed"
+  },
+  {
+    "title": "Let It Go",
+    "artist": "Idina Menzel",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 2013,
+    "movie": "Frozen",
+    "keywords": "ice castle, snow, snowflake, princess, frozen dress"
+  },
+  {
+    "title": "A Whole New World",
+    "artist": "Brad Kane & Lea Salonga",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 1992,
+    "movie": "Aladdin",
+    "keywords": "magic carpet, flying, moon, stars, palace, lamp"
+  },
+  {
+    "title": "Footloose",
+    "artist": "Kenny Loggins",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 1984,
+    "movie": "Footloose",
+    "keywords": "boots, dancing shoes, tractor, barn, no dancing sign"
+  },
+  {
+    "title": "Ghostbusters",
+    "artist": "Ray Parker Jr.",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 1984,
+    "movie": "Ghostbusters",
+    "keywords": "ghost, proton pack, vacuum, marshmallow man, red slash"
+  },
+  {
+    "title": "Men in Black",
+    "artist": "Will Smith",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 1997,
+    "movie": "Men in Black",
+    "keywords": "alien, black suit, sunglasses, memory flash, laser gun"
+  },
+  {
+    "title": "Sunflower",
+    "artist": "Post Malone & Swae Lee",
+    "category": "Hollywood",
+    "difficulty": "EASY",
+    "year": 2018,
+    "movie": "Spider-Man: Into the Spider-Verse",
+    "keywords": "sunflower, spider web, mask, sneakers, graffiti"
+  },
+  {
+    "title": "What a Feeling",
+    "artist": "Irene Cara",
+    "category": "Hollywood",
+    "difficulty": "HARD",
+    "year": 1983,
+    "movie": "Flashdance",
+    "keywords": "water chair, dancer, leg warmers, welding, stage"
+  },
+  {
+    "title": "Pure Imagination",
+    "artist": "Gene Wilder",
+    "category": "Hollywood",
+    "difficulty": "HARD",
+    "year": 1971,
+    "movie": "Willy Wonka & the Chocolate Factory",
+    "keywords": "chocolate river, candy tree, top hat, golden ticket"
+  },
+  {
+    "title": "Hold My Hand",
+    "artist": "Lady Gaga",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 2022,
+    "movie": "Top Gun: Maverick",
+    "keywords": "piano on runway, jet, dog tags, sunset, leather jacket"
+  },
+  {
+    "title": "Youve Got a Friend in Me",
+    "artist": "Randy Newman",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "year": 1995,
+    "movie": "Toy Story",
+    "keywords": "cowboy, astronaut toy, badge, boot, clouds wall"
+  },
+  {
+    "title": "Espresso",
+    "artist": "Sabrina Carpenter",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "year": 2024,
+    "movie": null,
+    "keywords": "coffee cup, beach, sunglasses, retro, swimsuit"
+  },
+  {
+    "title": "Flowers",
+    "artist": "Miley Cyrus",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "year": 2023,
+    "movie": null,
+    "keywords": "bouquet, gold dress, pool, gym, self love"
+  },
+  {
+    "title": "Cruel Summer",
+    "artist": "Taylor Swift",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "year": 2023,
+    "movie": null,
+    "keywords": "sun, bridge, convertible, dice, devil smile"
+  },
+  {
+    "title": "Birds of a Feather",
+    "artist": "Billie Eilish",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2024,
+    "movie": null,
+    "keywords": "two birds, feather, sky, flying together, heart"
+  },
+  {
+    "title": "Greedy",
+    "artist": "Tate McRae",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2023,
+    "movie": null,
+    "keywords": "hockey rink, trophy, money, mirror, dancing"
+  },
+  {
+    "title": "Vampire",
+    "artist": "Olivia Rodrigo",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "year": 2023,
+    "movie": null,
+    "keywords": "fangs, blood, night, white dress, stadium, biting"
+  },
+  {
+    "title": "Paint the Town Red",
+    "artist": "Doja Cat",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2023,
+    "movie": null,
+    "keywords": "red paint, devil horns, reaper, paintbrush, red city"
+  },
+  {
+    "title": "Water",
+    "artist": "Tyla",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "year": 2023,
+    "movie": null,
+    "keywords": "water bottle, sweat, drops, dancing, heat"
+  },
+  {
+    "title": "Beautiful Things",
+    "artist": "Benson Boone",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2024,
+    "movie": null,
+    "keywords": "microphone, mountain cliff, backflip, guitar"
+  },
+  {
+    "title": "Texas Hold Em",
+    "artist": "Beyonce",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "year": 2024,
+    "movie": null,
+    "keywords": "cowboy hat, poker cards, acoustic guitar, boots, texas"
+  },
+  {
+    "title": "Fortnight",
+    "artist": "Taylor Swift ft. Post Malone",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2024,
+    "movie": null,
+    "keywords": "typewriter, black dress, face tattoo, laboratory"
+  },
+  {
+    "title": "Stick Season",
+    "artist": "Noah Kahan",
+    "category": "Trending",
+    "difficulty": "HARD",
+    "year": 2023,
+    "movie": null,
+    "keywords": "tree branches, winter, snow, cabin, pine trees"
+  },
+  {
+    "title": "I Had Some Help",
+    "artist": "Post Malone ft. Morgan Wallen",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2024,
+    "movie": null,
+    "keywords": "pickup truck, beer glass, country road, handshake"
+  },
+  {
+    "title": "Houdini",
+    "artist": "Dua Lipa",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "year": 2023,
+    "movie": null,
+    "keywords": "mirror, red hair, magician, disappearing, dance studio"
+  }
+]

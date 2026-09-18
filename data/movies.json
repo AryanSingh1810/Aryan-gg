@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Interstellar",
+    "year": 2014,
+    "genre": "Sci-Fi",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "keywords": "space, rocket, planet, astronaut, time, black hole, cornfield",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "active": true
+  },
+  {
+    "title": "Titanic",
+    "year": 1997,
+    "genre": "Romance / Drama",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "ship, ocean, iceberg, love, rose, jack, drawing, whistle",
+    "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+    "active": true
+  },
+  {
+    "title": "Inception",
+    "year": 2010,
+    "genre": "Sci-Fi / Thriller",
+    "category": "Hollywood",
+    "difficulty": "MEDIUM",
+    "keywords": "spinning top, dream, elevator, mirror, city folding, briefcase, maze",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea.",
+    "active": true
+  },
+  {
+    "title": "The Dark Knight",
+    "year": 2008,
+    "genre": "Action / Crime",
+    "category": "Popular",
+    "difficulty": "EASY",
+    "keywords": "bat, joker, card, mask, clown, coin, spotlight, motorcycle",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological tests.",
+    "active": true
+  },
+  {
+    "title": "The Matrix",
+    "year": 1999,
+    "genre": "Sci-Fi / Action",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "pill, red, blue, green code, sunglasses, bullet dodge, trench coat",
+    "description": "When a beautiful stranger leads computer hacker Neo to a shocking truth about his reality.",
+    "active": true
+  },
+  {
+    "title": "Jurassic Park",
+    "year": 1993,
+    "genre": "Adventure / Sci-Fi",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "dinosaur, t-rex, amber, mosquito, jeep, electric fence, claw",
+    "description": "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting kids.",
+    "active": true
+  },
+  {
+    "title": "Oppenheimer",
+    "year": 2023,
+    "genre": "Biography / Drama",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "keywords": "atom, explosion, bomb, hat, mushroom cloud, desert, chalkboard",
+    "description": "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+    "active": true
+  },
+  {
+    "title": "Barbie",
+    "year": 2023,
+    "genre": "Comedy / Fantasy",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "keywords": "pink, doll, dreamhouse, rollerblades, convertible, beach, high heels",
+    "description": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land.",
+    "active": true
+  },
+  {
+    "title": "Dune",
+    "year": 2021,
+    "genre": "Sci-Fi / Adventure",
+    "category": "Trending",
+    "difficulty": "MEDIUM",
+    "keywords": "sandworm, desert, spice, blue eyes, knife, stillsuit, ring",
+    "description": "A noble family becomes embroiled in a war for control over the galaxy's most valuable asset while its heir is troubled by visions.",
+    "active": true
+  },
+  {
+    "title": "Avatar",
+    "year": 2009,
+    "genre": "Sci-Fi / Action",
+    "category": "Popular",
+    "difficulty": "EASY",
+    "keywords": "blue alien, tree, bow, floating islands, dragon, jungle, tail",
+    "description": "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting an alien world.",
+    "active": true
+  },
+  {
+    "title": "Gladiator",
+    "year": 2000,
+    "genre": "Action / Drama",
+    "category": "Classic",
+    "difficulty": "MEDIUM",
+    "keywords": "colosseum, sword, shield, tiger, wheat field, roman helmet, chariot",
+    "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
+    "active": true
+  },
+  {
+    "title": "The Lion King",
+    "year": 1994,
+    "genre": "Animation / Adventure",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "lion, rock, sun, crown, paw, cub, jungle, warthog",
+    "description": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+    "active": true
+  },
+  {
+    "title": "Back to the Future",
+    "year": 1985,
+    "genre": "Adventure / Comedy",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "delorean, lightning, clock tower, skateboard, 88 mph, fire tracks",
+    "description": "Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean.",
+    "active": true
+  },
+  {
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "genre": "Crime / Drama",
+    "category": "Classic",
+    "difficulty": "HARD",
+    "keywords": "briefcase, dancing, burger, gun, syringe, milkshake, haircut",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+    "active": true
+  },
+  {
+    "title": "Top Gun",
+    "year": 1986,
+    "genre": "Action / Drama",
+    "category": "Popular",
+    "difficulty": "EASY",
+    "keywords": "fighter jet, aviators, helmet, aircraft carrier, motorcycle, thumbs up",
+    "description": "As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things.",
+    "active": true
+  },
+  {
+    "title": "The Godfather",
+    "year": 1972,
+    "genre": "Crime / Drama",
+    "category": "Classic",
+    "difficulty": "MEDIUM",
+    "keywords": "rose, tuxedo, cat, puppet strings, orange, cigar, fedora",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "active": true
+  },
+  {
+    "title": "Spider-Man: Across the Spider-Verse",
+    "year": 2023,
+    "genre": "Animation / Action",
+    "category": "Trending",
+    "difficulty": "EASY",
+    "keywords": "spider, web, spray paint, portal, multiverse, mask, hoodie",
+    "description": "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.",
+    "active": true
+  },
+  {
+    "title": "Jaws",
+    "year": 1975,
+    "genre": "Adventure / Thriller",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "shark, fin, boat, ocean, teeth, life jacket, fishing rod",
+    "description": "When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+    "active": true
+  },
+  {
+    "title": "Star Wars: A New Hope",
+    "year": 1977,
+    "genre": "Sci-Fi / Adventure",
+    "category": "Classic",
+    "difficulty": "EASY",
+    "keywords": "lightsaber, death star, robot, space helmet, x-wing, laser",
+    "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's battle station.",
+    "active": true
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "year": 2001,
+    "genre": "Fantasy / Adventure",
+    "category": "Popular",
+    "difficulty": "EASY",
+    "keywords": "gold ring, volcano, sword, wizard hat, axe, bow, mountain",
+    "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring.",
+    "active": true
+  }
+]
